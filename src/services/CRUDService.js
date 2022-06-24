@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import db from '../models/index';
 var salt = bcrypt.genSaltSync(10);
 
-
+//ham su de luu 1 user vao database
 let createNewUser = async (data) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -25,6 +25,7 @@ let createNewUser = async (data) => {
     })
 }
 
+//ham ma hoa password su dung bcryptjs
 let hashUserPassword = (password) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -35,6 +36,21 @@ let hashUserPassword = (password) => {
         }
     })
 }
+
+let getAllUser = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let users = db.User.findAll({
+                raw: true   // khi du lieu tra ve se la 1 array cac obj
+            });
+            resolve(users)
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
-    createNewUser: createNewUser
+    createNewUser: createNewUser,
+    getAllUser: getAllUser
 }
