@@ -13,6 +13,24 @@
         td {
             border: 1px solid black;
         }
+
+        .btn-edit {
+            background-color: yellow;
+            border: none;
+            border-radius: 3px;
+            width: 60px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .btn-del {
+            background-color: red;
+            border: none;
+            border-radius: 3px;
+            width: 60px;
+            height: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -23,6 +41,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Address</th>
+            <th>Actions</th>
         </tr>
         <!-- cu phap lap trong ejs -->
         <% for(let i=0; i< dataTables.length; i++) { %>
@@ -39,7 +58,10 @@
                 <td>
                     <%= dataTables[i].address %>
                 </td>
-
+                <td>
+                    <a href="/edit-crud?id=<%= dataTables[i].id %>" class="btn-edit" type="button">Edit</a>
+                    <a class="btn-del" type="button">Delete</a>
+                </td>
             </tr>
             <% } %>
     </table>
