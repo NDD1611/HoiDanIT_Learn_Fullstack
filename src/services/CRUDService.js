@@ -1,5 +1,7 @@
 import bcrypt from 'bcryptjs';
 import db from '../models/index';
+
+
 var salt = bcrypt.genSaltSync(10);
 
 //ham su de luu 1 user vao database
@@ -18,7 +20,6 @@ let createNewUser = async (data) => {
                 roleId: data.roleId
             })
             resolve('ok create a new user success');
-
         } catch (e) {
             reject(e);
         }
