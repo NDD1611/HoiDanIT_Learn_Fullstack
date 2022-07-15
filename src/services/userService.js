@@ -100,6 +100,7 @@ let getAllUser = (userId) => {
 let createNewUser = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
+            console.log(data)
             let check = await checkUserEmail(data.email)
             if (check === true) {
                 resolve({
@@ -111,12 +112,13 @@ let createNewUser = (data) => {
                 await db.User.create({
                     email: data.email,
                     password: hashPasswordFromBcrybt,
-                    firstName: data.firstname,
-                    lastName: data.lastname,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
                     address: data.address,
-                    phonenumber: data.phonenumber,
-                    gender: data.gender === '1' ? true : false,
-                    roleId: data.roleId
+                    phonenumber: data.phoneNumber,
+                    gender: data.gender,
+                    roleId: data.roleId,
+                    positionId: data.positionId
                 })
                 resolve({
                     errCode: 0,
