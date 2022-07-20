@@ -100,7 +100,6 @@ let getAllUser = (userId) => {
 let createNewUser = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log(data)
             let check = await checkUserEmail(data.email)
             if (check === true) {
                 resolve({
